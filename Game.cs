@@ -25,16 +25,21 @@ namespace playground
 
         public void Play()
         {
+            Rounds = 0;
+            ResetVictoriesPlayers();
+
             while (Rounds < MaxRounds)
             {
                 PlayRound();
+                DisplayProgress();
+
                 Rounds++;
             }
         }
 
         private void PlayRound()
         {
-            ResetPlayerStatus();
+            ResetStatusPlayers();
             var enumerator = Players.GetEnumerator();
 
             while (true)
@@ -55,12 +60,33 @@ namespace playground
             }
         }
 
-        private void ResetPlayerStatus()
+        private void ResetVictoriesPlayers()
         {
             foreach (var player in Players)
             {
-                player.Status = PlayerStatus.NONE;
+                player.ResetVictories();
             }
+        }
+
+        private void ResetStatusPlayers()
+        {
+            foreach (var player in Players)
+            {
+                player.ResetStatus();
+            }
+        }
+
+        private void DisplayProgress()
+        {
+            if (Rounds % 100 != 0)
+            {
+                return;
+            }
+
+            var progress = Convert.ToDouble(Rounds) * 100 / Convert.ToDouble(MaxRounds);
+
+            Console.Clear();
+            Console.WriteLine($"Progress: {Math.Round(progress)}%");
         }
 
         public void GetStatistics()

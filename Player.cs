@@ -12,7 +12,7 @@ namespace playground
         public Player()
         {
             this.Id = Guid.NewGuid();
-            this.Status = PlayerStatus.NONE;
+            this.Status = PlayerStatus.PLAYING;
             this.Victories = 0;
         }
 
@@ -25,6 +25,16 @@ namespace playground
                 Status = PlayerStatus.WIN;
                 Victories++;
             }
+        }
+
+        public void ResetVictories()
+        {
+            Victories = 0;
+        }
+
+        public void ResetStatus()
+        {
+            Status = PlayerStatus.PLAYING;
         }
 
         public int CompareTo([AllowNull] Player other)
@@ -41,7 +51,6 @@ namespace playground
     public enum PlayerStatus
     {
         WIN,
-        LOSE,
-        NONE,
+        PLAYING,
     }
 }
