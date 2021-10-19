@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace playground
+namespace DiceMonteCarlo
 {
     public class Game
     {

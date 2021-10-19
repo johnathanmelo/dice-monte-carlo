@@ -1,6 +1,6 @@
 using System;
 
-namespace playground
+namespace DiceMonteCarlo
 {
     public class Dice
     {

@@ -1,7 +1,7 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 
-namespace playground
+namespace DiceMonteCarlo
 {
     public class Player : IComparable<Player>
     {
